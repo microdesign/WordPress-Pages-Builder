@@ -3,7 +3,7 @@
 Plugin Name: Page Builder by SiteOrigin
 Plugin URI: https://siteorigin.com/page-builder/
 Description: A drag and drop, responsive page builder that simplifies building your website.
-Version: dev
+Version: 2.2
 Author: SiteOrigin
 Author URI: https://siteorigin.com
 License: GPL3
@@ -11,9 +11,9 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Donate link: http://siteorigin.com/page-builder/#donate
 */
 
-define('SITEORIGIN_PANELS_VERSION', 'dev');
+define('SITEORIGIN_PANELS_VERSION', '2.2');
 if ( ! defined('SITEORIGIN_PANELS_JS_SUFFIX' ) ) {
-	define('SITEORIGIN_PANELS_JS_SUFFIX', '');
+	define('SITEORIGIN_PANELS_JS_SUFFIX', '.min');
 }
 define('SITEORIGIN_PANELS_BASE_FILE', __FILE__);
 
@@ -33,6 +33,9 @@ require_once plugin_dir_path(__FILE__) . 'inc/plugin-activation.php';
 require_once plugin_dir_path(__FILE__) . 'inc/admin-actions.php';
 require_once plugin_dir_path(__FILE__) . 'inc/sidebars-emulator.php';
 
+require_once plugin_dir_path(__FILE__) . 'so-widgets-bundle.php';
+require_once plugin_dir_path(__FILE__) . 'base/siteorigin-widget.class.php';
+
 if( defined('SITEORIGIN_PANELS_DEV') && SITEORIGIN_PANELS_DEV ) include plugin_dir_path(__FILE__).'inc/debug.php';
 
 /**
@@ -47,12 +50,13 @@ register_activation_hook(__FILE__, 'siteorigin_panels_activate');
  * Initialize the Page Builder.
  */
 function siteorigin_panels_init(){
-	$bundled = siteorigin_panels_setting('bundled-widgets');
-	if( !$bundled ) return;
+//	$bundled = siteorigin_panels_setting('bundled-widgets');
+//	if( !$bundled ) return;
+	
+		include plugin_dir_path(__FILE__).'widgets/widgets.php';
 
 	if( !defined('SITEORIGIN_PANELS_LEGACY_WIDGETS_ACTIVE') && ( !is_admin() || basename($_SERVER["SCRIPT_FILENAME"]) != 'plugins.php') ) {
 		// Include the bundled widgets if the Legacy Widgets plugin isn't active.
-		include plugin_dir_path(__FILE__).'widgets/widgets.php';
 	}
 }
 add_action('plugins_loaded', 'siteorigin_panels_init');
@@ -470,12 +474,8 @@ function siteorigin_panels_get_widgets(){
 /**
  * @param $a
  * @param $b
- *
- * @return int
  */
 function siteorigin_panels_widgets_sorter($a, $b){
-	if( empty($a['title']) ) return -1;
-	if( empty($b['title']) ) return 1;
 	return $a['title'] > $b['title'] ? 1 : -1;
 }
 
@@ -1156,7 +1156,6 @@ function siteorigin_panels_the_widget( $widget_info, $instance, $grid, $cell, $p
 
 	// Filter and sanitize the classes
 	$classes = apply_filters('siteorigin_panels_widget_classes', $classes, $widget, $instance, $widget_info);
-	$classes = explode( ' ', implode( ' ', $classes ) );
 	$classes = array_map('sanitize_html_class', $classes);
 
 	$title_html = siteorigin_panels_setting( 'title-html' );

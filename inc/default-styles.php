@@ -258,7 +258,7 @@ class SiteOrigin_Panels_Default_Styling {
 			if( !empty($url) ) {
 
 				if( $args['background_display'] == 'parallax' ) {
-					wp_enqueue_script('siteorigin-panels-front-parallax');
+//					wp_enqueue_script('siteorigin-panels-front-parallax');
 					$attributes['data-parallax'] = 'scroll';
 					$attributes['data-image-src'] = $url[0];
 				}
@@ -326,7 +326,7 @@ class SiteOrigin_Panels_Default_Styling {
 			if( !empty($url) ) {
 
 				if( $args['background_display'] == 'parallax' ) {
-					wp_enqueue_script('siteorigin-panels-front-parallax');
+					//wp_enqueue_script('siteorigin-panels-front-parallax');
 					$attributes['data-parallax'] = 'scroll';
 					$attributes['data-image-src'] = $url[0];
 				}
