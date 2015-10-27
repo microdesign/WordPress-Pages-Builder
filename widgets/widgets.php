@@ -222,6 +222,10 @@ abstract class SiteOrigin_Panels_Widget extends WP_Widget{
 
 		foreach($this->sub_widgets as $id => $sub) {
 			global $wp_widget_factory;
+			
+			
+				echo ($sub[1]);
+			
 			$the_widget = $wp_widget_factory->widgets[$sub[1]];
 
 			if(!isset($instance['origin_style_'.$id])) $instance['origin_style_'.$id] = !empty($this->widget_options['default_style_'.$id]) ? $this->widget_options['default_style_'.$id] : false;

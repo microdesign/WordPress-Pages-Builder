@@ -1,9 +1,9 @@
 <?php
 
-class SiteOrigin_Panels_Widget_Call_To_Action extends SiteOrigin_Panels_Widget  {
+class SiteOrigin_Panels_Widget_Cta_OLD extends SiteOrigin_Panels_Widget  {
 	function __construct() {
 		parent::__construct(
-			__('Call To Action (PB)', 'siteorigin-panels'),
+			__('Call To Action', 'siteorigin-panels'),
 			array(
 				'description' => __('A Call to Action block', 'siteorigin-panels'),
 				'default_style' => 'simple',

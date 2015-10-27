@@ -100,6 +100,10 @@ abstract class SiteOrigin_Widget_Field_Container_Base extends SiteOrigin_Widget_
 	protected function sanitize_field_input( $value ) {
 		/* @var $field_factory SiteOrigin_Widget_Field_Factory */
 		$field_factory = SiteOrigin_Widget_Field_Factory::getInstance();
+
+		if ( ! $this->fields)
+			return false;
+		
 		foreach( $this->fields as $sub_field_name => $sub_field_options ) {
 
 			/* @var $sub_field SiteOrigin_Widget_Field_Base */

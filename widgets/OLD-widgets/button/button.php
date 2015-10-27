@@ -1,6 +1,6 @@
 <?php
 
-class SiteOrigin_Panels_Widget_Button extends SiteOrigin_Panels_Widget  {
+class SiteOrigin_Widget_Button_Widget_OLD extends SiteOrigin_Panels_Widget  {
 	function __construct() {
 		parent::__construct(
 			__('Button (PB)', 'siteorigin-panels'),

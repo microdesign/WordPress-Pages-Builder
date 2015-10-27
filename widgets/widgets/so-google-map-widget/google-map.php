@@ -13,7 +13,7 @@ class SiteOrigin_Panels_Widget_Google_Map extends SiteOrigin_Widget {
 
 		parent::__construct(
 			'sow-google-map',
-			__( 'SiteOrigin Google Maps', 'siteorigin-widgets' ),
+			__( 'Google Maps', 'siteorigin-widgets' ),
 			array(
 				'description' => __( 'A Google Maps widget.', 'siteorigin-widgets' ),
 				'help'        => 'https://siteorigin.com/widgets-bundle/google-maps-widget/'
