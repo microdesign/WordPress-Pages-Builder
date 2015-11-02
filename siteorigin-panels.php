@@ -36,7 +36,8 @@ require_once plugin_dir_path(__FILE__) . 'inc/sidebars-emulator.php';
 require_once plugin_dir_path(__FILE__) . 'so-widgets-bundle.php';
 require_once plugin_dir_path(__FILE__) . 'base/siteorigin-widget.class.php';
 
-if( defined('SITEORIGIN_PANELS_DEV') && SITEORIGIN_PANELS_DEV ) include plugin_dir_path(__FILE__).'inc/debug.php';
+//if( defined('SITEORIGIN_PANELS_DEV') && SITEORIGIN_PANELS_DEV ) 
+	include plugin_dir_path(__FILE__).'inc/debug.php';
 
 /**
  * Hook for activation of Page Builder.
@@ -50,14 +51,10 @@ register_activation_hook(__FILE__, 'siteorigin_panels_activate');
  * Initialize the Page Builder.
  */
 function siteorigin_panels_init(){
-//	$bundled = siteorigin_panels_setting('bundled-widgets');
-//	if( !$bundled ) return;
 	
-		include plugin_dir_path(__FILE__).'widgets/widgets.php';
+	include plugin_dir_path(__FILE__).'widgets/widgets.php';
 
-	if( !defined('SITEORIGIN_PANELS_LEGACY_WIDGETS_ACTIVE') && ( !is_admin() || basename($_SERVER["SCRIPT_FILENAME"]) != 'plugins.php') ) {
-		// Include the bundled widgets if the Legacy Widgets plugin isn't active.
-	}
+	return false;
 }
 add_action('plugins_loaded', 'siteorigin_panels_init');
 

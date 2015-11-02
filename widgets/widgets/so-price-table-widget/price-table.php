@@ -11,7 +11,7 @@ class SiteOrigin_Panels_Widget_Price_Table extends SiteOrigin_Widget {
 	function __construct() {
 		parent::__construct(
 			'sow-price-table',
-			__('SiteOrigin Price Table', 'siteorigin-widgets'),
+			__('Price Table', 'siteorigin-widgets'),
 			array(
 				'description' => __('A simple Price Table.', 'siteorigin-widgets'),
 				'help' => 'https://siteorigin.com/widgets-bundle/price-table-widget/'

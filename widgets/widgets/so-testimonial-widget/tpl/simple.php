@@ -1,5 +1,9 @@
+
+
+sdaasadsasd
+
 <div class="testimonial-image-wrapper">
-	<img src="<?php echo esc_url($instance['image']) ?>" />
+	<?php echo wp_get_attachment_image($instance['image']) ?>
 </div>
 
 <div class="text">

@@ -1,27 +1,25 @@
 <?php
-$panel_info = $instance['panels_info']['style'];
-
-//print_r($instance);die;
+	$panel_info = $instance['panels_info']['style'];
 
 ?>
 <div class="sow-cta-base <?php if($panel_info['background_display'] == 'parallax'): ?>simplz-parallax<?php endif; ?>" >
 
-	<div class="sow-cta-wrapper">
+	<div class="sow-cta-wrapper wow fadeInUpBig">
 
 		<?php
 		$icon_styles = array();
-		if(!empty($instance['cta_icon_size'])) $icon_styles[] = 'font-size: '.intval($instance['cta_icon_size']).'px';
-		if(!empty($instance['cta_icon_color'])) $icon_styles[] = 'color: '.$instance['cta_icon_color'];
+		if(!empty($instance['icon']['cta_icon_size'])) $icon_styles[] = 'font-size: '.intval($instance['icon']['cta_icon_size']).'px';
+		if(!empty($instance['icon']['cta_icon_color'])) $icon_styles[] = 'color: '.$instance['icon']['cta_icon_color'];
 		?>
 		<div class="cta-icon">
-			<?php echo siteorigin_widget_get_icon( $instance['cta_icon'], $icon_styles ); ?>
+			<?php echo siteorigin_widget_get_icon( $instance['icon']['cta_icon'], $icon_styles ); ?>
 		</div>
 
-		<div class="sow-cta-text">
+		<div>
 			<h1 style="color:<?php echo wp_kses_post( $instance['title_color'] ) ?>">
 				<?php echo wp_kses_post( $instance['title'] ) ?>
 			</h1>
-			<div class="cta-description">
+			<div class="cta-description" style="color:<?php echo $instance['sub_title_color']?>">
 				<?php echo wp_kses_post( $instance['sub_title'] ) ?>
 			</div>
 		</div>

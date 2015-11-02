@@ -21,58 +21,45 @@ class SiteOrigin_Panels_Widget_Cta extends SiteOrigin_Widget  {
 			),
 			array(
 
-				'title' => array(
-					'type' => 'text',
-					'label' => __('Title', 'siteorigin-widgets'),
-				),
-
-				'sub_title' => array(
-					'type' => 'text',
-					'label' => __('Subtitle', 'siteorigin-widgets')
-				),
-
 				'title_color' => array(
 					'type' => 'color',
 					'label' => __( 'Choose a title color', 'simplz' ),
 					'default' => '#fff',
 				),
-				'cta_icon' => array(
-					'type' => 'icon',
-					'label' => __( 'Select Icon', 'simplz' ),
-				),
-				'cta_icon_color' => array(
-					'type' => 'color',
-					'label' => __( 'Select Icon color', 'simplz' ),
-				),
-				'cta_icon_size' => array(
-					'type' => 'number',
-					'label' => __( 'Select Icon size', 'simplz' ),
+				
+				'title' => array(
+					'type' => 'text',
+					'label' => __('Title', 'siteorigin-widgets'),
 				),
 				
-				'design' => array(
+				'sub_title_color' => array( 
+					'type' => 'color',
+					'label' => __( 'Choose a sub title color', 'simplz' ),
+					'default' => '#fff',
+				),
+				'sub_title' => array(
+					'type' => 'tinymce',
+					'label' => __('Subtitle', 'siteorigin-widgets')
+				),
+				'icon' => array(
 					'type' => 'section',
-					'label' => __('Design', 'siteorigin-widgets'),
+					'label' => __('Icon', 'siteorigin-widgets'),
 					'fields' => array(
-						'background_color' => array(
-							'type' => 'color',
-							'label' => __('Background color', 'siteorigin-widgets'),
+						'cta_icon' => array(
+							'type' => 'icon',
+							'label' => __( 'Select Icon', 'simplz' ),
 						),
-						'border_color' => array(
+						'cta_icon_color' => array(
 							'type' => 'color',
-							'label' => __('Border color', 'siteorigin-widgets'),
+							'label' => __( 'Select Icon color', 'simplz' ),
 						),
-						'button_align' => array(
-							'type' => 'select',
-							'label' => __( 'Button align', 'siteorigin-widgets' ),
-							'default' => 'right',
-							'options' => array(
-								'left' => __( 'Left', 'siteorigin-widgets'),
-								'right' => __( 'Right', 'siteorigin-widgets'),
-							)
-						)
+						'cta_icon_size' => array(
+							'type' => 'number',
+							'label' => __( 'Select Icon size', 'simplz' ),
+						),
 					)
 				),
-
+				
 				'button' => array(
 					'type' => 'widget',
 					'class' => 'SiteOrigin_Panels_Widget_Button',
@@ -123,18 +110,7 @@ class SiteOrigin_Panels_Widget_Cta extends SiteOrigin_Widget  {
 		return 'basic';
 	}
 
-	function get_less_variables($instance) {
-		if( empty( $instance ) ) return array();
-
-		return array(
-			'border_color' => $instance['design']['border_color'],
-			'background_color' => $instance['design']['background_color'],
-			'button_align' => $instance['design']['button_align'],
-		);
-	}
-
 	function modify_child_widget_form($child_widget_form, $child_widget) {
-		unset( $child_widget_form['design']['fields']['align'] );
 		return $child_widget_form;
 	}
 

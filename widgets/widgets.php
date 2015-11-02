@@ -693,7 +693,7 @@ class SiteOrigin_Panels_Widgets_Gallery extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 			'siteorigin-panels-gallery',
-			__( 'Gallery (PB)', 'siteorigin-panels' ),
+			__( 'Gallery', 'siteorigin-panels' ),
 			array(
 				'description' => __( 'Displays a gallery.', 'siteorigin-panels' ),
 			)
@@ -897,7 +897,7 @@ class SiteOrigin_Panels_Widgets_Video extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 			'siteorigin-panels-video',
-			__( 'Self Hosted Video (PB)', 'siteorigin-panels' ),
+			__( 'Self Hosted Video', 'siteorigin-panels' ),
 			array(
 				'description' => __( 'A self hosted video player.', 'siteorigin-panels' ),
 			)

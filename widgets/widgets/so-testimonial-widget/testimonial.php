@@ -1,9 +1,10 @@
 <?php
 
-class SiteOrigin_Panels_Widget_Testimonial extends SiteOrigin_Panels_Widget  {
+class SiteOrigin_Panels_Widget_Testimonial extends SiteOrigin_Widget  {
 	function __construct() {
 		parent::__construct(
-			__('Testimonial (PB)', 'siteorigin-panels'),
+			'sow-testimonial',
+			__('Testimonial', 'siteorigin-panels'),
 			array(
 				'description' => __('Displays a bullet list of points', 'siteorigin-panels'),
 				'default_style' => 'simple',
@@ -19,8 +20,8 @@ class SiteOrigin_Panels_Widget_Testimonial extends SiteOrigin_Panels_Widget  {
 					'label' => __('Location', 'siteorigin-panels'),
 				),
 				'image' => array(
-					'type' => 'text',
-					'label' => __('Image', 'siteorigin-panels'),
+					'type' => 'media',
+					'label' => __('Image', 'siteorigin-widgets'),
 				),
 				'text' => array(
 					'type' => 'textarea',
@@ -28,14 +29,24 @@ class SiteOrigin_Panels_Widget_Testimonial extends SiteOrigin_Panels_Widget  {
 				),
 				'url' => array(
 					'type' => 'text',
-					// TRANSLATORS: Uniform Resource Locator
 					'label' => __('URL', 'siteorigin-panels'),
 				),
 				'new_window' => array(
 					'type' => 'checkbox',
 					'label' => __('Open In New Window', 'siteorigin-panels'),
 				),
-			)
+			),
+			plugin_dir_path(__FILE__).'../'
 		);
 	}
+
+	function get_template_name( $instance ) {
+		return 'simple';
+	}
+
+	function get_template_variables( $instance, $args ) {
+		return $instance;
+	}
 }
+
+siteorigin_widget_register('testimonial', __FILE__);
