@@ -1,4 +1,4 @@
-# [Page Builder by SiteOrigin](https://siteorigin.com/page-builder/)
+# Page Builder by SiteOrigin - Improved
 
 This is the official development for SiteOrigin's Page Builder plugin. You can browse the source and take a look at what we're working on. We welcome issue reports and pull requests. 
 
