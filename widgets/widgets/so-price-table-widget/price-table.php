@@ -13,8 +13,7 @@ class SiteOrigin_Panels_Widget_Price_Table extends SiteOrigin_Widget {
 			'sow-price-table',
 			__('Price Table', 'siteorigin-widgets'),
 			array(
-				'description' => __('A simple Price Table.', 'siteorigin-widgets'),
-				'help' => 'https://siteorigin.com/widgets-bundle/price-table-widget/'
+				'description' => __('A simple Price Table.', 'siteorigin-widgets')
 			),
 			array(
 
@@ -136,7 +135,7 @@ class SiteOrigin_Panels_Widget_Price_Table extends SiteOrigin_Widget {
 			plugin_dir_path(__FILE__).'../'
 		);
 	}
-
+ 
 	function initialize() {
 		$this->register_frontend_scripts(
 			array(

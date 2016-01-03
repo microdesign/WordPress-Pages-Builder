@@ -5,6 +5,13 @@
   font-weight: normal;
   font-style: normal;
 }
+
+.sow-features-list .widget-title {
+    text-align: center;
+    padding: 50px;
+    font-size: 50px;
+}
+
 .sow-features-list {
   margin: 0 -25px;
   zoom: 1;
@@ -26,10 +33,30 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   padding: 0 25px;
-  margin-bottom: 40px;
+  padding-bottom: 40px;  
+  padding-top: 20px;
 }
-.sow-features-list .sow-features-feature .sow-icon-container {
-  text-decoration: none;
+
+.sow-features-feature:hover{
+    background: rgba(245, 245, 245, 0.15);
+}
+
+.sow-features-feature:hover .sow-more-text {
+    background: rgba(255, 255, 255, 0.46);
+}
+
+.sow-features-feature:hover .sow-icon-container {
+    transform: scale(1.1);
+}
+
+.sow-features-feature:hover .sow-icon-container span {
+    zoom: 0.7;
+    transform: scale(1.6);
+}
+
+.sow-features-list .sow-features-feature .sow-icon-container {      
+    text-decoration: none;      
+    transition: all .4s;  
 }
 .sow-features-list .sow-features-feature .sow-icon-container [class^="sow-icon-"],
 .sow-features-list .sow-features-feature .sow-icon-container .sow-icon-image {
@@ -47,7 +74,9 @@
   background-size: contain;
 }
 .sow-features-list .sow-features-feature h5 {
-  margin: 1em 0;
+  margin: 1em 0;  
+  color: white;
+  font-size: large;
 }
 .sow-features-list .sow-features-feature h5 a {
   color: inherit;
@@ -65,11 +94,17 @@
   text-decoration: underline;
 }
 .sow-features-list .sow-features-feature p:last-child {
-  margin-bottom: 0;
+  margin-bottom: 0;  
+  border: 1px solid white;
+  width: 30%;  
+  margin: 0 auto;
 }
-.sow-features-list .sow-features-feature.sow-features-feature-last-row {
-  margin-bottom: 0;
+
+.sow-features-list .sow-features-feature p:last-child:hover {
+    background: rgba(255, 255, 255, 0.46);
+    cursor: pointer;
 }
+
 .sow-features-list .sow-features-clear {
   clear: both;
 }
@@ -107,6 +142,11 @@
   position: relative;
   color: #404040;
 }
+
+.sow-features-feature p {
+    color: white;
+}
+
 .sow-features-list .sow-icon-container.sow-container-round:before {
   content: "\e600";
 }

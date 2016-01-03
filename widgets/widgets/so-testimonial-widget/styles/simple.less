@@ -8,20 +8,18 @@ Author URI: http://siteorigin.com/
 @import "../../../less/mixins";
 
 @borders: 1px solid #D0D0D0;
-@background_color: #FCFCFC;
 
 & {
-	background: @background_color;
-	border: @borders;
-	padding: 20px;
 	.clearfix();
-	.box-shadow(0 1px 2px rgba(0,0,0,0.1));
 
 	h5.testimonial-name {
-		margin: 1em 0 5px 0;
-		line-height: 1;
-		color: #333;
-		clear: none;
+        font-size: 0.9em;
+        display: block;
+        margin: 0;
+        margin-top: 20px;
+        line-height: 1;
+        color: #999;
+        clear: none;
 
 		a {
 			color: inherit;
@@ -29,33 +27,49 @@ Author URI: http://siteorigin.com/
 	}
 
 	small.testimonial-location {
-		font-size: 0.9em;
-		display: block;
-		margin: 0;
-		line-height: 1;
-		color: #999;
-		clear: none;
+        font-size: 0.5em;
+        display: block;
 	}
 
 	.text {
-		margin-left: 80px;
-		font-size: 0.95em;
-
+        font-size: 3.55em;
+        margin: 9px 0px 1px 122px;
+        p {
+          margin: 0;
+        }
 		p:first-child {
 			margin-top: 0;
 		}
 	}
 
+    .sow-testimonials-clear {
+      clear: both;
+    }
+  
+    .sow-testimonial-wrapper {
+      float: left;
+    }
+
 	.testimonial-image-wrapper {
-		.rounded(4px);
+        position: relative;
 		float: left;
-		width: 60px;
-		height: 60px;
 		overflow: hidden;
-		background: #333;
+        padding: 1px;
+        cursor: pointer;
 		img {
 			width: 100%;
 			height: auto;
+            .rounded(34px);
 		}
 	}
+    .cover {
+      position: absolute;
+      top: 1px;
+      bottom: 0;
+      background: #e67e22;
+      opacity: .5;
+      width: 100%;
+      margin-bottom: 1px;
+      .rounded(36px);
+    }
 }

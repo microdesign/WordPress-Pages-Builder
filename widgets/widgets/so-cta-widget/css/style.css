@@ -25,6 +25,11 @@
   margin-bottom: 0;
   font-weight: normal;
 }
+
+.sow-cta-base .ow-button-base {
+    margin-top: 20px;
+}
+
 @media screen and (max-width: 640px) {
   .sow-cta-base {
     text-align: center;

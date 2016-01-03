@@ -17,6 +17,14 @@ class SiteOrigin_Panels_Widget_Features extends SiteOrigin_Widget {
 			),
 			array(),
 			array(
+				'widget_title' => array(
+					'type' => 'text',
+					'label' => __('Title', 'siteorigin-widgets'),
+				),
+				'widget_title_color' => array(
+					'type' => 'color',
+					'label' => __('Title Color', 'siteorigin-widgets'),
+				),
 				'features' => array(
 					'type' => 'repeater',
 					'label' => __('Features', 'siteorigin-widgets'),

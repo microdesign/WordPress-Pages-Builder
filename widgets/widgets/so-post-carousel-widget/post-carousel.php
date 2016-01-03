@@ -14,50 +14,13 @@ function sow_carousel_register_image_sizes(){
 }
 add_action('init', 'sow_carousel_register_image_sizes');
 
-function sow_carousel_get_next_posts_page() {
-	if ( empty( $_REQUEST['_widgets_nonce'] ) || !wp_verify_nonce( $_REQUEST['_widgets_nonce'], 'widgets_action' ) ) return;
-	$query = wp_parse_args(
-		siteorigin_widget_post_selector_process_query($_GET['query']),
-		array(
-			'post_status' => 'publish',
-			'posts_per_page' => 10,
-			'paged' => empty( $_GET['paged'] ) ? 1 : $_GET['paged']
-		)
-	);
-
-	$posts = new WP_Query($query);
-	ob_start();
-	while($posts->have_posts()) : $posts->the_post(); ?>
-		<li class="sow-carousel-item">
-			<div class="sow-carousel-thumbnail">
-				<?php if( has_post_thumbnail() ) : $img = wp_get_attachment_image_src(get_post_thumbnail_id(), 'sow-carousel-default'); ?>
-					<a href="<?php the_permalink() ?>" style="background-image: url(<?php echo sow_esc_url($img[0]) ?>)">
-						<span class="overlay"></span>
-					</a>
-				<?php else : ?>
-					<a href="<?php the_permalink() ?>" class="sow-carousel-default-thumbnail"><span class="overlay"></span></a>
-				<?php endif; ?>
-			</div>
-			<h3><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h3>
-		</li>
-	<?php endwhile; wp_reset_postdata();
-	$result = array( 'html' => ob_get_clean() );
-	header('content-type: application/json');
-	echo json_encode( $result );
-
-	exit();
-}
-add_action( 'wp_ajax_sow_carousel_load', 'sow_carousel_get_next_posts_page' );
-add_action( 'wp_ajax_nopriv_sow_carousel_load', 'sow_carousel_get_next_posts_page' );
-
 class SiteOrigin_Panels_Widget_Post_Carousel extends SiteOrigin_Widget {
 	function __construct() {
 		parent::__construct(
 			'sow-post-carousel',
-			__('SiteOrigin Post Carousel', 'siteorigin-widgets'),
+			__('Post Carousel', 'siteorigin-widgets'),
 			array(
 				'description' => __('Display your posts as a carousel.', 'siteorigin-widgets'),
-				'help' => 'https://siteorigin.com/widgets-bundle/post-carousel-widget/'
 			),
 			array(
 
@@ -67,7 +30,41 @@ class SiteOrigin_Panels_Widget_Post_Carousel extends SiteOrigin_Widget {
 					'type' => 'text',
 					'label' => __('Title', 'siteorigin-widgets'),
 				),
-
+				'title_size' => array(
+					'type' => 'number',
+					'default' => '30',
+					'label' => __('Title Size', 'siteorigin-widgets'),
+				),
+				'title_color' => array(
+					'type' => 'color',
+					'label' => __('Title Color', 'siteorigin-widgets'),
+					'default' => '#fff',
+				),
+				
+				'more_details' => array(
+					'type' => 'text',
+					'label' => __('Button text', 'siteorigin-widgets'),
+				),
+				'more_details_color' => array(
+					'type' => 'color',
+					'label' => __('Button Color', 'siteorigin-widgets'),
+					'default' => '#fff',
+				),
+				'per_page' => array(
+					'type' => 'number',
+					'default' => 3,
+					'label' => __('Posts per page', 'siteorigin-widgets'),
+				),
+				'style' => array(
+					'type' => 'select',
+					'default' => 'base',
+					'options' => array(
+						'base' => __( 'Default Slider', 'siteorigin-widgets' ),
+						'grid' => __( 'Grid', 'siteorigin-widgets' ),
+						'isotope' => __( 'Isotope with category filters', 'siteorigin-widgets' ),
+					),
+					'label' => __('Post design style', 'siteorigin-widgets'),
+				),
 				'posts' => array(
 					'type' => 'posts',
 					'label' => __('Posts query', 'siteorigin-widgets'),
@@ -78,23 +75,6 @@ class SiteOrigin_Panels_Widget_Post_Carousel extends SiteOrigin_Widget {
 	}
 
 	function initialize() {
-		$this->register_frontend_scripts(
-			array(
-				array(
-					'touch-swipe',
-					plugin_dir_url( SOW_BUNDLE_BASE_FILE ) . 'js/jquery.touchSwipe' . SOW_BUNDLE_JS_SUFFIX . '.js',
-					array( 'jquery' ),
-					'1.6.6'
-				),
-				array(
-					'sow-carousel-basic',
-					siteorigin_widget_get_plugin_dir_url( 'post-carousel' ) . 'js/carousel' . SOW_BUNDLE_JS_SUFFIX . '.js',
-					array( 'jquery', 'touch-swipe' ),
-					SOW_BUNDLE_VERSION,
-					true
-				)
-			)
-		);
 		$this->register_frontend_styles(
 			array(
 				array(

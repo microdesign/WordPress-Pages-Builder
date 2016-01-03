@@ -1,9 +1,14 @@
 <?php
 $last_row = floor( ( count($instance['features']) - 1 ) / $instance['per_row'] );
+$panel_info = $instance['panels_info']['style'];
 ?>
 
-<div class="sow-features-list <?php if( $instance['responsive'] ) echo 'sow-features-responsive'; ?>">
+<div class="sow-features-list <?php if( $instance['responsive'] ) echo 'sow-features-responsive'; ?> <?php if($panel_info['background_display'] == 'parallax'): ?>simplz-parallax<?php endif; ?>">
 
+	<?php if ($instance['widget_title'] != ''): ?>
+		<h1 class="widget-title" style="color:<?php echo $instance['widget_title_color']?>"><?php echo $instance['widget_title']?></h1>
+	<?php endif; ?>
+	
 	<?php foreach( $instance['features'] as $i => $feature ) : ?>
 
 		<?php if( $i % $instance['per_row'] == 0 && $i != 0 ) : ?>
@@ -14,7 +19,7 @@ $last_row = floor( ( count($instance['features']) - 1 ) / $instance['per_row'] )
 
 			<?php if( !empty( $feature['more_url'] ) && $instance['icon_link'] ) echo '<a href="' . sow_esc_url( $feature['more_url'] ) . '" ' . ( $instance['new_window'] ? 'target="_blank"' : '' ) . '>'; ?>
 			<div
-				class="sow-icon-container <?php echo !empty($instance['container_shape']) ? 'sow-container-' . esc_attr($instance['container_shape']) : 'sow-container-none'?>"
+				class="sow-icon-container wow rollIn <?php echo !empty($instance['container_shape']) ? 'sow-container-' . esc_attr($instance['container_shape']) : 'sow-container-none'?>"
 				style="font-size: <?php echo intval($instance['container_size']) ?>px; color: <?php echo esc_attr($feature['container_color']) ?>; width: <?php echo intval($instance['container_size']) ?>px; height: <?php echo intval($instance['container_size']) ?>px;">
 				<?php
 				if( !empty($feature['icon_image']) ) {
@@ -51,7 +56,7 @@ $last_row = floor( ( count($instance['features']) - 1 ) / $instance['per_row'] )
 				<?php endif; ?>
 
 				<?php if(!empty($feature['more_text'])) : ?>
-					<p class="sow-more-text">
+					<p class="sow-more-text wow fadeIn">
 						<?php if( !empty( $feature['more_url'] ) ) echo '<a href="' . sow_esc_url( $feature['more_url'] ) . '" ' . ( $instance['new_window'] ? 'target="_blank"' : '' ) . '>'; ?>
 						<?php echo wp_kses_post( $feature['more_text'] ) ?>
 						<?php if( !empty( $feature['more_url'] ) ) echo '</a>'; ?>

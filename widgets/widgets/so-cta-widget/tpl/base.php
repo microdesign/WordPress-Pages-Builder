@@ -1,10 +1,9 @@
 <?php
 	$panel_info = $instance['panels_info']['style'];
-
 ?>
 <div class="sow-cta-base <?php if($panel_info['background_display'] == 'parallax'): ?>simplz-parallax<?php endif; ?>" >
 
-	<div class="sow-cta-wrapper wow fadeInUpBig">
+	<div class="sow-cta-wrapper wow fadeInLeftBig">
 
 		<?php
 		$icon_styles = array();
